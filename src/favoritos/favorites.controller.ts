@@ -25,7 +25,8 @@ export class FavoritesController {
             year_old_from, year_old_until, max_price_from, max_price_until,
             area_from, area_until, rooms, bathroom, parking_lot, balcony,
             terrace, view, property_type_oldest, time_to_buy, how_to_pay,
-            need_sell, description, deposit, estrato, permuta,code, idUser
+            need_sell, description, deposit, estrato, permuta,code, idUser,
+            idOrder
         }
 
         favorites.idUser = idUser;

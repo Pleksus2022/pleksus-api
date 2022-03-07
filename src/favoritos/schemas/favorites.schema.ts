@@ -107,6 +107,11 @@ export class Favorites extends mongoose.Document {
   })
   idUser: string;
 
+  @Prop({
+    type: String,
+  })
+  idOrder: string;
+
 }
 
 export const favoritesSchema = SchemaFactory.createForClass(Favorites);
