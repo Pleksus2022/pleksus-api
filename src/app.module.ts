@@ -11,6 +11,7 @@ import { PropertiesModule } from './properties/properties.module';
 import { OrdersModule } from './orders/orders.module';
 import { FavoritesController } from './favoritos/favorites.controller';
 import { FavoritosModule } from './favoritos/favoritos.module';
+import { MailModule } from './mail/mail.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { FavoritosModule } from './favoritos/favoritos.module';
     PropertiesModule,
     OrdersModule,
     FavoritosModule,
+    MailModule,
   ],
   controllers: [AppController],
   providers: [AppService],

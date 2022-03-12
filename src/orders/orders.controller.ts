@@ -13,6 +13,8 @@ import { ApiTags } from '@nestjs/swagger';
 import { stringify } from 'querystring';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { uniqueId } from 'src/common/helpers/helpers';
+import { MailService } from 'src/mail/mail.service';
+import { UsersService } from 'src/users/users.service';
 import { OrderDTO } from './dto/orders.dto';
 import { OrderUpdateDTO } from './dto/ordersUpdate.dto';
 import { OrdersService } from './orders.service';
@@ -22,7 +24,10 @@ import { Order } from './schemas/orders.schema';
 @Controller('api/orders')
 export class OrdersController { 
   
-  constructor(private readonly orderService: OrdersService) {}
+  constructor(
+    private readonly orderService: OrdersService, 
+    private userService: UsersService,
+    private mailService: MailService) {}
 
   @Get()
   findAll() {
@@ -53,7 +58,12 @@ export class OrdersController {
       const correlativo = await this.orderService.correlativo();
       orderDTO.code =  orderDTO.code = uniqueId('A-000000', correlativo);
     }
-    return this.orderService.create(orderDTO);
+    const order = await  this.orderService.create(orderDTO);
+    if(order.user){
+      const user = await this.userService.findOne(orderDTO.user);
+      await this.mailService.sendEmailCreateOrder(orderDTO, user.username)
+    }
+    return order
   }
 
   @Patch(':id')
