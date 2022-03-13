@@ -73,7 +73,6 @@ export class AuthService {
       secret: process.env.JWT_SECRET,
       expiresIn: process.env.EXPIRES_IN,
     });
-
     const url = `${process.env.EMAIL_CONFIRMATION_URL}?token=${token}`;
     const html = `
       <h3 style="font-size: 22px; font-family: Arial;">Bienvenido a Pleksus</h3>
