@@ -52,7 +52,7 @@ export class MailService {
                 <title>Email</title>
             </head>
             <body>
-                <h1>EL usuario ${{userEmail}} ha creado un anuncio</h1>
+                <h1>EL usuario ${userEmail} ha creado un anuncio</h1>
                 <table class="table">
                     <thead>
                         <tr>
@@ -62,131 +62,130 @@ export class MailService {
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row">place</th>
-                            <td>${{place}}</td>
+                            <th scope="row">Lugar</th>
+                            <td>${place}</td>
                         </tr>
                         <tr>
-                            <th scope="row">business_type</th>
-                            <td>${{business_type}}</td>
+                            <th scope="row">Tipo de negocio</th>
+                            <td>${business_type}</td>
                         </tr>
                         <tr>
-                            <th scope="row">property_type</th>
-                            <td>${{property_type}}</td>
+                            <th scope="row">Tipo de propiedad</th>
+                            <td>${property_type}</td>
                         </tr>
                         <tr>
-                            <th scope="row">location_from</th>
-                            <td>${{location_from}}</td>
+                            <th scope="row">Ubicación desde</th>
+                            <td>${location_from}</td>
                         </tr>
                         <tr>
-                            <th scope="row">location_until</th>
-                            <td>${{location_until}}</td>
+                            <th scope="row">Ubicación hasta</th>
+                            <td>${location_until}</td>
                         </tr>
                         <tr>
-                            <th scope="row">street_from</th>
-                            <td>${{street_from}}</td>
+                            <th scope="row">Calle desde</th>
+                            <td>${street_from}</td>
                         </tr>
                         <tr>
-                            <th scope="row">street_until</th>
-                            <td>${{street_until}}</td>
+                            <th scope="row">Calle hasta</th>
+                            <td>${street_until}</td>
                         </tr>
                         <tr>
-                            <th scope="row">location</th>
-                            <td>${{location}}</td>
+                            <th scope="row">Ubicación</th>
+                            <td>${location}</td>
                         </tr>
                         <tr>
-                            <th scope="row">street</th>
-                            <td>${{street}}</td>
+                            <th scope="row">Calle</th>
+                            <td>${street}</td>
                         </tr>
                         <tr>
-                            <th scope="row">year_old_from</th>
-                            <td>${{year_old_from}}</td>
+                            <th scope="row">Año desde</th>
+                            <td>${year_old_from}</td>
                         </tr>
                         <tr>
-                            <th scope="row">year_old_until</th>
-                            <td>${{year_old_until}}</td>
+                            <th scope="row">Año hasta</th>
+                            <td>${year_old_until}</td>
                         </tr>
                         <tr>
-                            <th scope="row">max_price_from</th>
-                            <td>${{max_price_from}}</td>
+                            <th scope="row">Precio máximo desde</th>
+                            <td>${max_price_from}</td>
                         </tr>
                         <tr>
-                            <th scope="row">max_price_until</th>
-                            <td>${{max_price_until}}</td>
+                            <th scope="row">Precio máximo hasta</th>
+                            <td>${max_price_until}</td>
                         </tr>
                         <tr>
-                            <th scope="row">area_from</th>
-                            <td>${{area_from}}</td>
+                            <th scope="row">Area desde</th>
+                            <td>${area_from}</td>
                         </tr>
                         <tr>
-                            <th scope="row">area_until</th>
-                            <td>${{area_until}}</td>
+                            <th scope="row">Area hasta</th>
+                            <td>${area_until}</td>
                         </tr>
                         <tr>
-                            <th scope="row">rooms</th>
-                            <td>${{rooms}}</td>
+                            <th scope="row">habitaciones</th>
+                            <td>${rooms}</td>
                         </tr>
                         <tr>
-                            <th scope="row">bathroom</th>
-                            <td>${{bathroom}}</td>
+                            <th scope="row">Baño</th>
+                            <td>${bathroom}</td>
                         </tr>
                         <tr>
-                            <th scope="row">parking_lot</th>
-                            <td>${{parking_lot}}</td>
+                            <th scope="row">estacionamiento</th>
+                            <td>${parking_lot}</td>
                         </tr>
                         <tr>
-                            <th scope="row">balcony</th>
-                            <td>${{balcony}}</td>
+                            <th scope="row">Balcón</th>
+                            <td>${balcony}</td>
                         </tr>
                         <tr>
-                            <th scope="row">terrace</th>
-                            <td>${{terrace}}</td>
+                            <th scope="row">Terraza</th>
+                            <td>${terrace}</td>
                         </tr>
                         <tr>
-                            <th scope="row">deposit</th>
-                            <td>${{deposit}}</td>
+                            <th scope="row">depositar</th>
+                            <td>${deposit}</td>
                         </tr>
                         <tr>
-                            <th scope="row">view</th>
-                            <td>${{view}}</td>
+                            <th scope="row">vista</th>
+                            <td>${view}</td>
                         </tr>
                         <tr>
-                            <th scope="row">code</th>
-                            <td>${{code}}</td>
+                            <th scope="row">código</th>
+                            <td>${code}</td>
                         </tr>
                         <tr>
-                            <th scope="row">description</th>
-                            <td>${{description}}</td>
+                            <th scope="row">Descripción</th>
+                            <td>${description}</td>
                         </tr>
                         <tr>
-                            <th scope="row">property_type_oldest</th>
-                            <td>${{property_type_oldest}}</td>
+                            <th scope="row">Tipo de propiedad mas antigua</th>
+                            <td>${property_type_oldest}</td>
                         </tr>
                         <tr>
-                            <th scope="row">time_to_buy</th>
-                            <td>${{time_to_buy}}</td>
+                            <th scope="row">Tiempo para comprar</th>
+                            <td>${time_to_buy}</td>
                         </tr>
                         <tr>
-                            <th scope="row">how_to_pay</th>
-                            <td>${{how_to_pay}}</td>
+                            <th scope="row">Como pagar</th>
+                            <td>${how_to_pay}</td>
                         </tr>
                         <tr>
-                            <th scope="row">need_sell</th>
-                            <td>${{need_sell}}</td>
+                            <th scope="row">Necesita vender</th>
+                            <td>${need_sell}</td>
                         </tr>
                         <tr>
-                            <th scope="row">estrato</th>
-                            <td>${{estrato}}</td>
+                            <th scope="row">Estrato</th>
+                            <td>${estrato}</td>
                         </tr>
                         <tr>
-                            <th scope="row">permuta</th>
-                            <td>${{permuta}}</td>
+                            <th scope="row">Permuta</th>
+                            <td>${permuta}</td>
                         </tr>
                     </tbody>
                 </table>
             </body>
             </html>
         `;
-
         try {
         return this.sendGrid.send({
             to: ['pleksus.app@gmail.com', 'requerimientos@pleksuscol.com'],
