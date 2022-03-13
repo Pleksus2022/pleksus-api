@@ -1,13 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { MailerService } from '@nestjs-modules/mailer';
-import { OrderDTO } from 'src/orders/dto/orders.dto';
+import { OrderDTO } from '../orders/dto/orders.dto';
 import { SendGridService } from '@anchan828/nest-sendgrid';
 
 
 @Injectable()
 export class MailService {
 
-    constructor(private mailerService: MailerService, private readonly sendGrid: SendGridService){}
+    constructor(private readonly sendGrid: SendGridService){}
 
     async sendEmailCreateOrder({
         place,
@@ -191,7 +190,7 @@ export class MailService {
         try {
         return this.sendGrid.send({
             to: ['pleksus.app@gmail.com', 'requerimientos@pleksuscol.com'],
-            from: 'pleksus',
+            from: 'pleksus.app@gmail.com',
             subject: 'Nuevo Anuncio',
             html,
         });
