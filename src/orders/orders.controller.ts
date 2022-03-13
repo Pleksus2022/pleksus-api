@@ -61,7 +61,7 @@ export class OrdersController {
     const order = await  this.orderService.create(orderDTO);
     if(order.user){
       const user = await this.userService.findOne(orderDTO.user);
-      await this.mailService.sendEmailCreateOrder(orderDTO, user.username)
+      await this.mailService.sendEmailCreateOrder(orderDTO, user.username, user.phone)
     }
     return order
   }

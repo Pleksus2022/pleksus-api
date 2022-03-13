@@ -40,7 +40,8 @@ export class MailService {
         estrato,
         permuta,
         status}: OrderDTO, 
-        userEmail: string){
+        userEmail: string,
+        phone: any){
 
         const html = `
             <!DOCTYPE html>
@@ -53,6 +54,7 @@ export class MailService {
             </head>
             <body>
                 <h1>EL usuario ${userEmail} ha creado un anuncio</h1>
+                <p>Número de contacto: ${phone}</p>
                 <table class="table">
                     <thead>
                         <tr>
@@ -186,6 +188,8 @@ export class MailService {
             </body>
             </html>
         `;
+
+        console.log(html)
         try {
         return this.sendGrid.send({
             to: ['pleksus.app@gmail.com', 'requerimientos@pleksuscol.com'],
