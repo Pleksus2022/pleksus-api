@@ -32,7 +32,7 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
-  @Delete()
+  @Delete(':id')
   delete(@Param('id') id: string){
     return this.usersService.delete(id);
   }
