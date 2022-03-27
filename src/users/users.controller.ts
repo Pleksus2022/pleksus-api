@@ -26,6 +26,11 @@ export class UsersController {
     return this.usersService.getById(id);
   }
 
+  @Get()
+  findAll() {
+    return this.usersService.findAll();
+  }
+
   @UseGuards(JwtAuthGuard)
   @Patch(':id')
   update(@Param('id') id: string, @Body() user: UserUpdateDTO) {

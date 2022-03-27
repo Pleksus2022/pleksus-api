@@ -188,8 +188,6 @@ export class MailService {
             </body>
             </html>
         `;
-
-        console.log(html)
         try {
         return this.sendGrid.send({
             to: ['pleksus.app@gmail.com', 'requerimientos@pleksuscol.com'],
