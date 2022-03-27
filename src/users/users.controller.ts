@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Patch,
@@ -29,6 +30,11 @@ export class UsersController {
   @Get()
   findAll() {
     return this.usersService.findAll();
+  }
+
+  @Delete()
+  delete(@Param('id') id: string){
+    return this.usersService.delete(id);
   }
 
   @UseGuards(JwtAuthGuard)

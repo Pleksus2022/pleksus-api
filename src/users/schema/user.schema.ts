@@ -40,6 +40,7 @@ export class User extends mongoose.Document {
 
   @Prop()
   interest: string;
+  
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
