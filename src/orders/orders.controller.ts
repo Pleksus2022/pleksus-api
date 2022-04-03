@@ -53,7 +53,7 @@ export class OrdersController {
 
   //orderDTO.code = `${UniqueIdSell()}` + `${correlativo}`;
   @Post()
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   async create(@Body() orderDTO: OrderDTO) {
     if(orderDTO.business_type.includes('Sell')){
       const correlativo = await this.orderService.correlativo();
@@ -72,7 +72,7 @@ export class OrdersController {
   }
 
   @Patch(':id')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   update(@Param('id') id: string, @Body() order: OrderUpdateDTO) {
     return this.orderService.update(id, order);
   }
