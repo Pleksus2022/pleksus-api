@@ -34,6 +34,11 @@ export class OrdersController {
     return this.orderService.findAll();
   }
 
+  @Get('populate')
+  findAllWihtPopulate(){
+    return this.orderService.findAllWithPopulate()
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.orderService.findOne(id);

@@ -19,6 +19,10 @@ export class OrdersService {
     return await this.model.find();
   }
 
+  async findAllWithPopulate(): Promise<Order[]> {
+    return await this.model.find().populate('user', 'phone username');
+  }
+
   async findOne(id: string): Promise<Order> {
     const order = await this.model.findById(id).populate('user');
 
