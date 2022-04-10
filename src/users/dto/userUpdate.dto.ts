@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { IsBoolean, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class UserUpdateDTO {
   @ApiProperty()
@@ -48,4 +48,10 @@ export class UserUpdateDTO {
   @IsNotEmpty()
   @IsString()
   readonly interest: string;
+
+  @ApiProperty()
+  @IsOptional()
+  @IsNotEmpty()
+  @IsBoolean()
+  readonly admin: boolean
 }

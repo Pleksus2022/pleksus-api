@@ -91,6 +91,10 @@ export class UsersService {
       currentUser.type = userUpdateDTO.type;
     }
 
+    if(userUpdateDTO.admin){
+      currentUser.admin = userUpdateDTO.admin;
+    }
+
     if (userUpdateDTO.password) {
       const hash = await this.hashPassword(userUpdateDTO.password);
       currentUser.password = hash;
