@@ -93,6 +93,8 @@ export class UsersService {
 
     if(userUpdateDTO.admin){
       currentUser.admin = userUpdateDTO.admin;
+    }else if(!userUpdateDTO.admin){
+      currentUser.admin = userUpdateDTO.admin;
     }
 
     if (userUpdateDTO.password) {
