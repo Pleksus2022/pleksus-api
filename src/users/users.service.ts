@@ -110,10 +110,8 @@ export class UsersService {
     userUpdateDTO: UserUpdateDTO,
   ): Promise<User> {
     const currentUser = await this.model.findById( username );
-    console.log(currentUser)
     if (userUpdateDTO.password) {
       const hash = await this.hashPassword(userUpdateDTO.password);
-      console.log(hash)
       currentUser.password = hash;
     }
 

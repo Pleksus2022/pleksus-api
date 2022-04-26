@@ -62,7 +62,7 @@ export class UsersController {
     return this.usersService.verificationCode(username, code);
   }
 
-  //@UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Patch('update-photo-profile/:id')
   @UseInterceptors(FileInterceptor('file'))
   updatePhotoProfile(

@@ -144,6 +144,10 @@ export class OrdersService {
       currentOrder.time_to_buy = orderUpdateDTO.time_to_buy;
     }
 
+    if (orderUpdateDTO.description) {
+      currentOrder.description = orderUpdateDTO.description;
+    }
+
     if (orderUpdateDTO.how_to_pay) {
       currentOrder.how_to_pay = orderUpdateDTO.how_to_pay;
     }
