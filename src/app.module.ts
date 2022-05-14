@@ -12,6 +12,7 @@ import { OrdersModule } from './orders/orders.module';
 import { FavoritesController } from './favoritos/favorites.controller';
 import { FavoritosModule } from './favoritos/favoritos.module';
 import { MailModule } from './mail/mail.module';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports: [
@@ -33,6 +34,9 @@ import { MailModule } from './mail/mail.module';
     OrdersModule,
     FavoritosModule,
     MailModule,
+    MulterModule.register({
+      dest: './files',
+    })
   ],
   controllers: [AppController],
   providers: [AppService],

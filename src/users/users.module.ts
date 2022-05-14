@@ -4,6 +4,7 @@ import { USER } from 'src/common/models/models';
 import { UserSchema } from './schema/user.schema';
 import { UsersService } from './users.service';
 import { UsersController } from './users.controller';
+import { SendImagesController } from './send-images/send-images.controller';
 
 @Module({
   imports: [
@@ -13,6 +14,6 @@ import { UsersController } from './users.controller';
   ],
   providers: [UsersService],
   exports: [UsersService],
-  controllers: [UsersController],
+  controllers: [UsersController, SendImagesController],
 })
 export class UsersModule {}

@@ -122,9 +122,9 @@ export class UsersService {
     id: string,
     file: Express.Multer.File,
   ): Promise<User> {
-    const fileB64 = file.buffer.toString('base64');
+    const fileName = file.filename
     const currentUser = await this.model.findById(id);
-    currentUser.photo = fileB64;
+    currentUser.photo = fileName;
     return await currentUser.save();
   }
 
