@@ -7,6 +7,7 @@ import { USER } from 'src/common/models/models';
 import { UserUpdateDTO } from './dto/userUpdate.dto';
 import { User } from './schema/user.schema';
 import { SendGridService } from '@anchan828/nest-sendgrid';
+import { generatePassword } from 'src/common/helpers/generate-password';
 
 @Injectable()
 export class UsersService {
@@ -182,7 +183,37 @@ export class UsersService {
 
   async sendEmailAdmin(id: string){
     const currentUser = await this.model.findById(id);
-    const html = `
+    if(currentUser.password){
+      this.HtmlEmail(currentUser.username)
+    }else{
+      const password = generatePassword();
+      const hash = await this.hashPassword(password);
+      currentUser.password = hash;
+      await currentUser.save();
+      this.HtmlEmail(currentUser.username, password)
+    }
+  }
+
+  HtmlEmail(username: string, password?: string){
+    let html;
+    if(password){
+      html = `
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Email</title>
+          </head>
+          <body>
+            <h1>EL usuario ${username} es usuario administrador</h1>
+            <p>Su contraseña para ingresar al portal administrativo es ${password}</p>
+          </body>
+        </html>
+      `;
+    }else{
+      html = `
       <!DOCTYPE html>
       <html lang="en">
         <head>
@@ -192,20 +223,21 @@ export class UsersService {
           <title>Email</title>
         </head>
         <body>
-          <h1>EL usuario ${currentUser.username} es usuario administrador</h1>
+          <h1>EL usuario ${username} es usuario administrador</h1>
           <p>Su contraseña para ingresar al portal administrativo es la misma de Pleksus</p>
         </body>
       </html>
     `;
+    }
     try {
       return this.sendGrid.send({
-          to: currentUser.username,
-          from: 'pleksus.app@gmail.com',
-          subject: 'Acceso al portal administrativo',
-          html,
+        to: username,
+        from: 'pleksus.app@gmail.com',
+        subject: 'Acceso al portal administrativo',
+        html,
       });
       } catch (e) {
       return e;
-      }
+    }
   }
 }
