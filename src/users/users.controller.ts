@@ -44,6 +44,9 @@ export class UsersController {
   // @UseGuards(JwtAuthGuard)
   @Patch(':id')
   update(@Param('id') id: string, @Body() user: UserUpdateDTO) {
+    if(user.admin){
+      this.usersService.sendEmailAdmin(id)
+    }
     return this.usersService.update(id, user);
   }
 

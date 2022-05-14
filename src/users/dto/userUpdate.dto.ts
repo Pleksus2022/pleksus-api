@@ -23,7 +23,7 @@ export class UserUpdateDTO {
   @IsOptional()
   @IsNotEmpty()
   @IsString()
-  readonly password: string;
+  password: string;
 
   @ApiProperty()
   @IsOptional()

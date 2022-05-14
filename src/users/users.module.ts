@@ -10,7 +10,7 @@ import { SendImagesController } from './send-images/send-images.controller';
   imports: [
     MongooseModule.forFeatureAsync([
       { name: USER.name, useFactory: () => UserSchema },
-    ]),
+    ])
   ],
   providers: [UsersService],
   exports: [UsersService],
