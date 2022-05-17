@@ -82,7 +82,7 @@ export class UsersController {
     @Param('id') id: string,
     @UploadedFile() file: Express.Multer.File,
   ) {
-    console.log(file)
+    // console.log(file)
     return this.usersService.updatePhotoProfile(id, file);
   }
 }
