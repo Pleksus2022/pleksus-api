@@ -10,19 +10,23 @@ import { Order } from './schemas/orders.schema';
 export class OrdersService {
   constructor(@InjectModel(ORDER.name) private readonly model: Model<Order>) {}
 
+  // Crear nueva orden
   async create(orderDTO: OrderDTO): Promise<Order> {
     const newOrder = new this.model(orderDTO);
     return await newOrder.save();
   }
 
+  // Encontrar todas as ordenes
   async findAll(): Promise<Order[]> {
     return await this.model.find();
   }
 
+  // Encontrar todos los usuarios y mostrar telefono y email
   async findAllWithPopulate(): Promise<Order[]> {
     return await this.model.find().populate('user', 'phone username');
   }
 
+  //ENcontrar una orden por id
   async findOne(id: string): Promise<Order> {
     const order = await this.model.findById(id).populate('user');
 
@@ -33,10 +37,12 @@ export class OrdersService {
     return order;
   }
 
+  // Borrar una orden
   async delete(id: string) {
     return await this.model.findByIdAndUpdate(id, { status: false }, {new: true});
   }
 
+  // Actualizar una Orden
   async update(id: string, orderUpdateDTO: OrderUpdateDTO): Promise<Order> {
     const currentOrder = await this.model.findById(id);
 

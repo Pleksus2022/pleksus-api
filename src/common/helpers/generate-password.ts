@@ -1,3 +1,4 @@
+//Funcion para crear password aleatorio
 export const generatePassword = () => {
     var pass = '';
     var str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' + 'abcdefghijklmnopqrstuvwxyz0123456789@#$';

@@ -19,6 +19,7 @@ export class AuthService {
     private readonly sendGrid: SendGridService,
   ) {}
 
+  // Validar usuario
   async validateUser(username: string, password: string): Promise<any> {
     const user = await this.usersService.findByUsername(username);
     if (!user) return null;
@@ -32,6 +33,7 @@ export class AuthService {
     return user;
   }
 
+  // Autenticacion de usuario
   async login(user: any) {
     const payload = { username: user.username, sub: user.userId };
     return {
@@ -40,6 +42,7 @@ export class AuthService {
     };
   }
 
+  // registro de un nuevo usuario
   async register(userDTO: UserDTO) {
     try {
       const createdUser = await this.usersService.create(userDTO);
@@ -67,6 +70,7 @@ export class AuthService {
     }
   }
 
+  // Envio de link al email para completar el registro de usuario
   async sendVerificationLink(email: string) {
     const payload = { email };
     const token = this.jwtService.sign(payload, {
@@ -99,6 +103,7 @@ export class AuthService {
     return await this.sendVerificationLink(user.username);
   }
 
+  // Confirmacion de correo
   public async confirmEmail(username: string) {
     const user = await this.usersService.findByUsername(username);
     if (user.isEmailConfirmed) return 'Email already confirmed';

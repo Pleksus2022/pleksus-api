@@ -28,21 +28,25 @@ export class OrdersController {
     private readonly orderService: OrdersService, 
     private userService: UsersService,
     private mailService: MailService) {}
-
+  
+  // Obtener todas las ordenes
   @Get()
   findAll() {
     return this.orderService.findAll();
   }
 
+  // Obtener todas las ordenes por populate
   @Get('populate')
   findAllWihtPopulate(){
     return this.orderService.findAllWithPopulate()
   }
 
+  // Obtener una orden por id
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.orderService.findOne(id);
   }
+
 
   @Get('findByUser/:userId')
   @UseGuards(JwtAuthGuard)
@@ -51,6 +55,7 @@ export class OrdersController {
     return result.filter((order: any) => order.user == userId);
   }
 
+  // Crear una orden
   //orderDTO.code = `${UniqueIdSell()}` + `${correlativo}`;
   @Post()
   // @UseGuards(JwtAuthGuard)
@@ -71,12 +76,14 @@ export class OrdersController {
     return order
   }
 
+  // Actualizar una orden
   @Patch(':id')
   // @UseGuards(JwtAuthGuard)
   update(@Param('id') id: string, @Body() order: OrderUpdateDTO) {
     return this.orderService.update(id, order);
   }
 
+  // Borrar una orden por id
   @Delete(':id')
   // @UseGuards(JwtAuthGuard)
   delete(@Param('id') id: string) {

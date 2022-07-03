@@ -25,17 +25,20 @@ import { Response } from 'express';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
+  // ENcontrar un usuario por id
   // @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.usersService.getById(id);
   }
 
+  //Obtener todos los usuarios
   @Get()
   findAll() {
     return this.usersService.findAll();
   }
 
+  //Borrar un usuario
   @Delete(':id')
   delete(@Param('id') id: string){
     return this.usersService.delete(id);
@@ -50,12 +53,14 @@ export class UsersController {
     return this.usersService.update(id, user);
   }
 
+  //Actualizacion de contraseña
   @Patch('update-password/:id')
   updatePassword(@Param('id') id: string, @Body() user: UserUpdateDTO) {
     console.log(user)
     return this.usersService.updatePassword(id, user);
   }
 
+  //Verificacion de codigo
   @Get('send-verification-code/:username')
   sendVerificationCode(@Param('username') username: string) {
     return this.usersService.sendVerificationCode(username);
@@ -69,6 +74,7 @@ export class UsersController {
     return this.usersService.verificationCode(username, code);
   }
 
+  //Actualizacion de imagen de perfil
   @UseGuards(JwtAuthGuard)
   @Patch('update-photo-profile/:id')
   @UseInterceptors(FileInterceptor('file', {

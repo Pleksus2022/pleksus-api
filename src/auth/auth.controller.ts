@@ -28,12 +28,14 @@ export class AuthController {
     private readonly usersService: UsersService,
   ) {}
 
+  // Controlador de usuario para autenticacion
   @UseGuards(LocalAuthGuard)
   @Post('login')
   async login(@Request() req) {
     return this.authService.login(req.user);
   }
-
+  
+  //Controlador para un registro de usuario 
   @Post('register')
   async register(@Body() userDTO: UserDTO) {
     const user = await this.authService.register(userDTO);
@@ -41,6 +43,7 @@ export class AuthController {
     return user;
   }
 
+  // Aca nos aseguramos si el email fue confirmado
   @Get('email-confirmation')
   @Render('email-confirmation')
   async emailConfirmation(@Query() query: any) {
@@ -57,6 +60,7 @@ export class AuthController {
     await this.authService.resendConfirmationLink(request.id);
   }
 
+  // Autenticacion por google, aca registramos a un usuario por google
   @Post('google')
   async googleAuth(@Body() request: UserOauthDTO) {
     const client = new OAuth2Client();
